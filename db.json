@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "name": "Sahil Singh",
+      "email": "rsinghsahil91@gmail.com",
+      "contact": "9082042766",
+      "id": 1
+    },
+    {
+      "name": "sahil ",
+      "email": "rsinghsahil91@gmail.com",
+      "contact": "249216532",
+      "id": 2
+    }
+  ]
+}
