@@ -1,6 +1,8 @@
-import axios from 'axios'
-import React, { useState, useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function EditU() {
     const { id } = useParams()
@@ -19,7 +21,17 @@ export default function EditU() {
     const onSubmit = async e => {
         e.preventDefault();
         await axios.put(`http://localhost:3002/users/${id}`, user)
-        history("/")
+        toast.success('Edited Successfully', {
+            position: "top-center",
+            autoClose: 700,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            });
+        setTimeout(() => history("/"), 2000);
     }
     const loadUser = async () => {
         const result = await axios.get(`http://localhost:3002/users/${id}`)
@@ -29,9 +41,10 @@ export default function EditU() {
         loadUser()
     }, [])
     return (
-        <div>
-            <div className="container my-4 form">
+        <>
+        <ToastContainer />
                 <h1 className="text-center">Edit Your Profile</h1>
+            <div className="container my-4 form-edit">
                 <div className="container">
                     <form onSubmit={event => onSubmit(event)}>
 
@@ -49,11 +62,11 @@ export default function EditU() {
                             <input type="tel" value={contact} name="contact" onChange={(event) => onInputChange(event)} max="10" min="10" className="form-control" id="exampleInputPassword1" />
                         </div>
 
-                        <button type="submit" className="btn btn-outline-primary">Update Profile</button>
+                        <button type="submit" className="btn btn-outline-light">Update Profile</button>
                     </form>
 
                 </div>
             </div>
-        </div>
+            </>
     )
 }

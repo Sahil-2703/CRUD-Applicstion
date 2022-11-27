@@ -19,7 +19,7 @@ export default function Users() {
 
   return (
     <div>
-      <div className="container form my-4">
+      <div className="container forms my-4">
         <div className="display-user">
         <h1 className="display-4"><strong> User Id:</strong> {id}</h1>
         <Link className="btn btn-outline-primary my-4" to="/">Back to Home</Link>

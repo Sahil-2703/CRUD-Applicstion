@@ -15,19 +15,20 @@ export default function Home() {
   }
   const deleteUser=async id=>{
     await axios.delete(`http://localhost:3002/users/${id}`);
-    loadUsers()
+    alert("Sure, you want to delete!!!");
+    loadUsers();
   }
 
   return (
     <div>
       <div className="container">
-        <table className=" container table border shadow my-4" >
+        <table className=" container table details" >
           <thead>
             <tr>
               <th scope="col">SNo</th>
               <th scope="col">Name</th>
-              <th scope="col">Email Id</th>
-              <th scope="col">Contact No.</th>
+              <th className="hidden" scope="col">Email Id</th>
+              <th className="hidden" scope="col">Contact No.</th>
               <th scope="col">Actions</th>
             </tr>
           </thead>
@@ -40,9 +41,9 @@ export default function Home() {
                   <td>{user.email}</td>
                   <td>{user.contact}</td>
                   <td>
-                    <Link type="button" class="btn btn-outline-primary mx-2" to={`users/${user.id}`}><i className='fa fa-eye'></i></Link>
-                    <Link type="button" class="btn btn-outline-success mx-2" to={`users/edit/${user.id}`}><i className='fa fa-pencil'></i></Link>
-                    <Link type="button" class="btn btn-outline-danger mx-2" onClick={()=>deleteUser(user.id)}><i className='fa fa-trash'></i></Link>
+                    <Link type="button" class="btn btn-outline-light my-1 mx-2" to={`users/${user.id}`}><i className='fa fa-eye'></i></Link>
+                    <Link type="button" class="btn btn-outline-success my-1 mx-2" to={`users/edit/${user.id}`}><i className='fa fa-pencil'></i></Link>
+                    <Link type="button" class="btn btn-outline-danger my-1 mx-2" onClick={()=>deleteUser(user.id)}><i className='fa fa-trash'></i></Link>
                   </td>
                 </tr>
               ))
